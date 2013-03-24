@@ -26,3 +26,15 @@ pure \x @ List _ ::= \x : nil
 [ \x , \y .. \z ] ::= enumFromThenTo x y z
 [ \x ..] ::= enumFrom x
 [ \x , \y ..] ::= enumFromThen x y
+
+String ::= List Char
+
+replicate zero ::= const nil
+replicate (succ (\n @ Nat)) \x ::= x : replicate n x
+
+oneOf nil ::= _|_
+oneOf (\x : \xs) ::= x | oneOf xs
+oneOf (\a .. \b) \x ::= (true -> x) (a <= x && x <= b)
+
+noneOf nil ::= _
+noneOf (\x : \xs) ::= x -> _|_ | noneOf xs

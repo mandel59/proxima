@@ -1,0 +1,17 @@
+module "Prelude.Nat"
+
+Nat ::= zero | succ Nat
+
+nat \z (z -> z) :: Nat -> z
+nat \z \s
+    = zero -> z
+    | succ \n -> s (nat z s n)
+
+Nat + Nat :: Nat
+\x + \y = nat x succ y
+
+Nat - Nat :: Nat
+\x - \y = nat x (pred | id) y
+
+Nat * Nat :: Nat
+\x * \y = nat zero (x +) y

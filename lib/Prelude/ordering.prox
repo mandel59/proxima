@@ -1,3 +1,6 @@
 module "Prelude.Ordering"
 
 Ordering ::= lt | eq | gt
+
+succ lt ::= eq
+succ eq ::= gt

@@ -1,0 +1,3 @@
+module "Prelude.Enum"
+
+pred ::= succ \x -> x
