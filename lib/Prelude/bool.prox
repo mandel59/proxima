@@ -1,0 +1,17 @@
+module "Prelude.Bool"
+
+Bool ::= false | true
+
+bool \f \t :: Bool -> (f | t)
+bool \f \t
+    = false -> f
+    | true -> t
+
+(&&) :: Bool -> Bool -> Bool
+(&&) = bool (const false) id
+
+(||) :: Bool -> Bool -> Bool
+(||) = bool id (const true)
+
+not :: Bool -> Bool
+not = bool true false

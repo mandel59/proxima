@@ -1,0 +1,11 @@
+module "Prelude.Function"
+
+id \x ::= x
+
+const \a -> _ ::= a
+
+\f $ \x ::= f x
+
+\f . \g ::= \x -> f (g x)
+
+flip \f \x \y ::= f y x

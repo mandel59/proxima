@@ -1,0 +1,28 @@
+module "Prelude.List"
+
+List \a ::= nil | a : List a
+
+head (\x : _) ::= x
+
+tail (_ : \xs) ::= xs
+
+last (\x : nil) ::= x
+last (_ : (\xs ~@ nil)) ::= last xs
+
+init (_ : nil) ::= nil
+init (\x : (\xs ~@ nil)) ::= x : init xs
+
+nil ++ \y ::= y
+(\x : \xs) ++ \y ::= \x : (\xs ++ \y)
+
+empty @ List _ ::= nil
+pure \x @ List _ ::= \x : nil
+\x <|> \y @ List _ ::= x ++ y
+
+[ ] ::= empty
+[ \x ] ::= pure x
+[ \x , \xs ] ::= pure x <|> [ xs ]
+[ \x .. \y ] ::= enumFromTo x y
+[ \x , \y .. \z ] ::= enumFromThenTo x y z
+[ \x ..] ::= enumFrom x
+[ \x , \y ..] ::= enumFromThen x y

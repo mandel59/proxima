@@ -1,0 +1,8 @@
+module Prelude.Option
+
+Option \a ::= none | some a
+
+option \n \s :: Option \a -> (n a | s)
+option \n \s
+    = none -> n
+    | some -> s

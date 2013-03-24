@@ -1,0 +1,9 @@
+module "Prelude.Tuple"
+
+fst (\a , _) ::= a
+
+snd (_ , \b) ::= b
+
+curry \f \a \b ::= f (a, b)
+
+uncurry \f (\a , \b) ::= f a b

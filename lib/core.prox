@@ -1,0 +1,20 @@
+infixr   0 (;) ([,])
+infixr  10 (,)
+infix   20 (::) (::=) (=)
+infixl  30 (@) (~@)
+infixr  40 (|)
+infixr  50 (&)
+infixr 100 ($)
+infixr 110 (->) (=>) (>>=) (>>)
+infixr 120 (||)
+infixr 130 (&&)
+infix  140 (==) (~=) (<) (<=) (>) (>=) elem notElem
+infixr 150 (:) (++) (..)
+infixl 160 (+) (-)
+infixl 170 (*) (/) div mod rem quot
+infixr 180 (^) (^^) (**)
+infixl 190 (!!) (.)
+
+(@) \x x ::= x
+
+(~@) ::= \x -> (x -> _|_ | _ -> x)

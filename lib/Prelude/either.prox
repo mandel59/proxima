@@ -1,0 +1,8 @@
+module "Prelude.Either"
+
+Either \a \b ::= left a | right b
+
+either \l \r :: Either \a \b -> (l a | r b)
+either \l \r
+    = left -> l
+    | right -> r
