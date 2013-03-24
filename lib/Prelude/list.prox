@@ -13,15 +13,14 @@ init (_ : nil) ::= nil
 init (\x : (\xs ~@ nil)) ::= x : init xs
 
 nil ++ \y ::= y
-(\x : \xs) ++ \y ::= \x : (\xs ++ \y)
+(\x : \xs) ++ \y ::= x : (xs ++ y)
 
 empty @ List _ ::= nil
-pure \x @ List _ ::= \x : nil
-\x <|> \y @ List _ ::= x ++ y
+pure \x @ List _ ::= x : nil
+\x <|> \y @ List _ ::= (x @ List _) ++ (y @ List _)
 
 [ ] ::= empty
-[ \x ] ::= pure x
-[ \x , \xs ] ::= pure x <|> [ xs ]
+([) (]) (\x , \xs) ::= pure x <|> ([) (]) xs
 [ \x .. \y ] ::= enumFromTo x y
 [ \x , \y .. \z ] ::= enumFromThenTo x y z
 [ \x ..] ::= enumFrom x
